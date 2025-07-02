@@ -1,0 +1,13 @@
+[
+  {
+    "id": "63e8fe62-5232-4e51-853e-4d2936d7861d",
+    "title": "Updated Feature Announcement",
+    "content": "New characters and bug fixes released.",
+    "type": "update",
+    "published_at": "2025-07-01T12:00:00Z",
+    "expires_at": "2025-07-30T12:00:00Z",
+    "priority": 5,
+    "image_url": "",
+    "created_by": "dev-team"
+  }
+]
