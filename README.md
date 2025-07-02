@@ -42,7 +42,85 @@ node index.js
 The server will start at:
 http://localhost:3000
 
-Authentication Method
-Use the following header in your requests for protected routes:
 
+## Testing the API with Thunder Client
+Install Thunder Client (VS Code Extension)
+
+This project is best tested using [Thunder Client](https://www.thunderclient.com/), a lightweight REST client built into VS Code.
+
+### How to Test Endpoints
+
+1. **Open Thunder Client**
+   - Click the ⚡ icon on the left sidebar in VS Code.
+
+2. **Create a New Request**
+   - Click "New Request" and set the method (GET, POST, PUT, DELETE).
+   - Set the request URL (see endpoint examples below).
+
+3. **For POST, PUT, DELETE**
+   - Go to the **Headers** tab and add:
+     ```
+     Authorization: Bearer my-secret-key
+     Content-Type: application/json
+     ```
+   - Then go to the **Body** tab and choose `JSON`.
+
+---
+
+### Example Requests in Thunder Client
+
+#### ➕ Create News (POST /news)
+
+- Method: `POST`
+- URL: `http://localhost:3000/news`
+- Body (JSON):
+json
+{
+  "title": "System Maintenance",
+  "content": "The system will be down at 2 AM.",
+  "type": "announcement",
+  "published_at": "2025-07-01T10:00:00Z",
+  "expires_at": "2025-07-05T10:00:00Z",
+  "priority": 1,
+  "image_url": "",
+  "created_by": "admin"
+}
+
+#### Get All News (GET /news)
+
+Method: GET
+URL: http://localhost:3000/news
+
+Optional filters:
+http://localhost:3000/news?type=announcement&priority=2
+
+#### Get News by ID (GET /news/:id)
+Method: GET
+
+URL: http://localhost:3000/news/<your-news-id>
+
+Replace <your-news-id> with a valid ID returned from the POST request.
+
+#### Update News (PUT /news/:id)
+Method: PUT
+
+URL: http://localhost:3000/news/<your-news-id>
+
+Body (JSON):
+{
+  "title": "Updated Maintenance Time",
+  "priority": 3
+}
+
+#### Delete News (DELETE /news/:id)
+Method: DELETE
+
+URL: http://localhost:3000/news/<your-news-id>
+
+#### Note
+
+All POST, PUT, and DELETE requests must include the Authorization header:
 Authorization: Bearer my-secret-key
+The server must be running locally on http://localhost:3000.
+
+Thunder Client saves your requests — you can organize them into a collection for easy reuse.
